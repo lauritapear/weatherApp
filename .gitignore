@@ -1,0 +1,11 @@
+
+### Service ###
+/weather-service/node_modules/
+/weather-service/.nyc_output/
+/weather-service/coverage/
+/weather-service/dist/
+/weather-service/log/
+/weather-service/.npmrc
+
+### WebApp ###
+/weather-webapp/node_modules/

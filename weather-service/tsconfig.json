@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": { 
+        "*": ["types/*"], 
+        "@components/*": ["src/components/*"],
+        "@config/*": ["src/config/*"],
+        "@lib/*": ["src/lib/*"],
+        "@billingExport/*": ["src/billingExport/*"],
+        "@routes/*": ["src/routes/*"],
+        },
+        "outDir": "./dist/",
+        "module": "commonjs",
+        "target": "es2019",
+        "lib": ["es2019"],
+        "allowJs": true,
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "resolveJsonModule": true,
+        "plugins": [
+            {
+                "name": "tslint-language-service"
+            }
+        ]
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+}
