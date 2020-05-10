@@ -20,14 +20,14 @@ export class ForecastService implements IForecastService {
 
   public async oneDayForecast(cityCode: number): Promise<any> {
     const singleDayResponse: any = await this.getSingleDayForecast().getSingleDay(cityCode, app.env.token);
-    console.log(singleDayResponse.data.Headline.Text);
-    return singleDayResponse.data.Headline.Text;
+    console.log(singleDayResponse.data);
+    return singleDayResponse.data;
   }
 
   public async fiveDaysForecast(cityCode: number): Promise<any> {
     const fiveDaysResponse: any = await this.getFiveDaysForecast().getFiveDays(cityCode, app.env.token);
-    console.log(fiveDaysResponse.data.Headline.DailyForecasts);
-    return fiveDaysResponse.data.Headline.DailyForecasts;
+    console.log(fiveDaysResponse.data);
+    return fiveDaysResponse.data;
   }
 
   public async twelveHoursForecast(cityCode: number): Promise<any> {
