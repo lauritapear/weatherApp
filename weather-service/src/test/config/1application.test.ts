@@ -1,5 +1,5 @@
 import { describe, Try } from 'riteway';
-import {app} from '../../config';
+import { app } from '../../config';
 
 import * as path from 'path';
 const srcFilename = path.basename(__filename);
@@ -13,7 +13,7 @@ describe('get logger() instance', async assert => {
       token: 'T0K3N',
       port: 3000,
     };
-    
+
     assert({
       given: `(test 1-${srcFilename}) env from "app.env" `,
       should: ' return default env properties',
@@ -21,5 +21,4 @@ describe('get logger() instance', async assert => {
       expected: expectedEnvValues,
     });
   }
-
 }); /* end of describe*/

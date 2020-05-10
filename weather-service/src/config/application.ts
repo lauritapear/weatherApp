@@ -1,7 +1,6 @@
-import {getEnvConfig, EnvProperties } from './env';
+import { getEnvConfig, EnvProperties } from './env';
 
 class Application {
-  
   get env(): EnvProperties {
     return getEnvConfig();
   }

@@ -9,7 +9,6 @@ import * as expressWinston from 'express-winston';
 import * as routes from '../routes';
 import { expressErrorResponseHandler } from '../error';
 import { requestLoggerOptions, errorLoggerOptions } from './expressLogger';
-// import { cookieAuth } from '@sa-server/core';
 import app from './application';
 
 const options: cors.CorsOptions = {
@@ -27,7 +26,6 @@ const load = (): express.Application => {
   expressApp.use(bodyParser.json({ limit: '2mb' }));
   expressApp.use(bodyParser.urlencoded({ limit: '2mb', extended: true }));
   expressApp.use(cookieParser());
-  // expressApp.use(cookieAuth({ excludePaths: ['/health', '/api-docs'], environment: nodeEnv, secret: secret }));
   expressApp.use(compression());
   expressApp.use(helmet());
 

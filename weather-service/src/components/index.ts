@@ -1,2 +1,2 @@
-import * as ForecastComponent from './forecastService'
-export { ForecastComponent};
+import * as ForecastComponent from './forecastService';
+export { ForecastComponent };

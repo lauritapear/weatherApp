@@ -3,7 +3,6 @@ import * as express from 'express';
 import { app, httpServer, expressApp } from './config';
 
 async function main() {
-
   // init express app
   const expApp: express.Application = expressApp;
   // start http server using ExpressApp instance
@@ -15,7 +14,6 @@ async function main() {
 
 // javasript IIFE
 (async () => {
-  // const logger = LoggerService.getInstance().getLogger();
   try {
     await main();
   } catch (err) {

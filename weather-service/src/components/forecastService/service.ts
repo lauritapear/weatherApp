@@ -12,19 +12,17 @@ export class ForecastService implements IForecastService {
     return ForecastService.instance;
   }
 
-  public async cityCode(cityName: string): Promise<any> 
-  {
-    const cityCodeResponse:any = await this.getCityCode().getCode(cityName);
+  public async cityCode(cityName: string): Promise<any> {
+    const cityCodeResponse: any = await this.getCityCode().getCode(cityName);
     // console.log("cityCode response: ", cityCodeResponse.data.key);
     return cityCodeResponse.data[0].Key;
   }
 
   public async oneDayForecast(cityCode: number): Promise<any> {
-    const singleSayResponse : any= await this.getSingleDayForecast().getSingleDay(cityCode);
+    const singleSayResponse: any = await this.getSingleDayForecast().getSingleDay(cityCode);
     console.log(singleSayResponse.data.Headline.Text);
     return singleSayResponse.data.Headline.Text;
   }
-  
 
   getCityCode = () => {
     return {
@@ -34,11 +32,11 @@ export class ForecastService implements IForecastService {
           .get(host, {
             params: {
               apikey: '83uOrfJQO5h07Bz87yR25DcZeMATOpmO',
-              q: cityName
-            }})
+              q: cityName,
+            },
+          })
           .then(function(response) {
-            
-            console.log("cityCode response:",response.data[0].Key)
+            console.log('cityCode response:', response.data[0].Key);
             return response;
           })
           .catch(function(error) {
@@ -55,10 +53,11 @@ export class ForecastService implements IForecastService {
         return axios
           .get(host, {
             params: {
-              apikey: '83uOrfJQO5h07Bz87yR25DcZeMATOpmO'
-            }})
+              apikey: '83uOrfJQO5h07Bz87yR25DcZeMATOpmO',
+            },
+          })
           .then(function(response) {
-            console.log("singleDay status:",response)
+            console.log('singleDay status:', response);
             return response;
           })
           .catch(function(error) {

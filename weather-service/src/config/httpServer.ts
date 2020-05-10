@@ -2,11 +2,9 @@
 import * as http from 'http';
 import * as express from 'express';
 import { Address } from 'cluster';
-// import { LoggerService } from '../lib/LoggerService/LoggerService';
 
 type emptyFunction = () => void;
 const closeListeners: emptyFunction[] = [];
-// const logger = LoggerService.getInstance().getLogger();
 
 export function init(expressApp: express.Application): http.Server {
   const httpServer: http.Server = http.createServer(expressApp);
@@ -68,9 +66,7 @@ function onListening(): void {
 }
 
 function onProcessClosing(httpServer: http.Server): void {
-  // const logger = LoggerService.getInstance().getLogger();
   console.log('SIGINT signal received. and then http server');
-  // calling all close callbacks
   triggerCloseCallback();
   httpServer.removeAllListeners();
   httpServer.close(function(err: Error) {
