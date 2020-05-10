@@ -1,76 +1,76 @@
-import {organizationReducer} from './organizationReducer';
+import {dayForecastReducer} from './dayForecastReducer';
 import * as actionTypes from '../actions/actionTypes';
 
-describe('Organization Reducer', () =>{
+describe('Day Forecast Reducer', () =>{
   const dataToTest = [
-        {name: "repo",  forks: 2 },
-        {name: "repo",  forks: 5},
-        {name: "repo",  forks: 3},
-        {name: "repo",  forks: 20},
+    {Date: "2020-05-10T07:00:00+02:00", Temperature: {Minimun:{Value:40}} },
+    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
+    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
+    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
   ];
 
   it('should have initial state', () =>{
-    expect(organizationReducer(undefined,{})).toEqual({
+    expect(dayForecastReducer(undefined,{})).toEqual({
       loading: false,
       error: false,
-      repoData: []
+      dayForecastData: []
     });
   })
 
   it('should store Repo data on sucess request', () =>{
-    expect(organizationReducer({
+    expect(dayForecastReducer({
       loading: false,
       error: false,
-      repoData: []
+      dayForecastData: []
     }, {
-      type: actionTypes.SET_ORGANIZATION_REPOS_DATA,
+      type: actionTypes.SET_DAY_FORECAST_DATA,
       reposData: dataToTest
     })).toEqual({
       loading: false,
       error: false,
-      repoData: dataToTest
+      dayForecastData: dataToTest
     })
   })
 
   it('should set loading to true when request has been sent', () =>{
-    expect(organizationReducer({
+    expect(dayForecastReducer({
       loading: false,
       error: false,
-      repoData: []
+      dayForecastData: []
     }, {
-      type: actionTypes.GET_ORGANIZATION_REPOS_DATA_START
+      type: actionTypes.GET_DAY_FORECAST_DATA_START
     })).toEqual({
       loading: true,
       error: false,
-      repoData: []
+      dayForecastData: []
     })
   })
 
   it('should set error to true and clear loading when request has failed', () =>{
-    expect(organizationReducer({
+    expect(dayForecastReducer({
       loading: true,
       error: false,
-      repoData: []
+      dayForecastData: []
     }, {
-      type: actionTypes.FETCH_ORGANIZATION_REPOS_DATA_FAIL
+      type: actionTypes.FETCH_DAY_FORECAST_DATA_FAIL
     })).toEqual({
       loading: false,
       error: true,
-      repoData: []
+      dayForecastData: []
     })
   })
 
   it('should clear all data when restart had been requested', () =>{
-    expect(organizationReducer({
+    expect(dayForecastReducer({
       loading: true,
       error: true,
-      repoData: dataToTest
+      dayForecastData: dataToTest
     }, {
       type: actionTypes.RESTART_ORGANIZATION_DATA
     })).toEqual({
       loading: false,
       error: false,
-      repoData: []
+      dayForecastData: []
     })
   })
 });

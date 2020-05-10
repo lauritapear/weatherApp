@@ -9,7 +9,7 @@ describe('Restart Saga', () =>{
 
   it('should yield restart for forms, org and commits', () =>{
     expect(generator.next().value).toEqual(put({"type": "RESTART_FORM"}));
-    expect(generator.next().value).toEqual(put({"type": "RESTART_ORGANIZATION_DATA"}));
-    expect(generator.next().value).toEqual(put({"type": "RESTART_REPO_COMMITS_DATA"}));
+    expect(generator.next().value).toEqual(put({"type": "RESTART_DAY_FORECAST_DATA"}));
+    expect(generator.next().value).toEqual(put({"type": "RESTART_HOUR_FORECAST_DATA"}));
   })
 });

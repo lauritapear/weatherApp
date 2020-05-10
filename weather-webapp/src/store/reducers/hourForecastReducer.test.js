@@ -1,75 +1,75 @@
-import {repoCommitsReducer} from './repoCommitsReducer';
+import {hourForecastReducer} from './hourForecastReducer';
 import * as actionTypes from '../actions/actionTypes';
 
 describe('Repo Commits Reducer', () =>{
   const dataToTest = [
-        {author: {avatar_url:'someUrl'}, commit:{message:'someMsg', author:{name:'Author'}} },
-        {author: {avatar_url:'someUrl'}, commit:{message:'someMsg', author:{name:'Author'}} },
-        {author: {avatar_url:'someUrl'}, commit:{message:'someMsg', author:{name:'Author'}} }
+    { Hour: 9, Temperature: {Minimun:{Value:40}}},
+    { Hour: 9, Temperature: {Minimun:{Value:40}}},
+    { Hour: 9, Temperature: {Minimun:{Value:40}}} 
   ];
 
   it('should have initial state', () =>{
-    expect(repoCommitsReducer(undefined,{})).toEqual({
-      loadingCommits: false,
-      errorCommits: false,
-      commitsData: []
+    expect(hourForecastReducer(undefined,{})).toEqual({
+      loadingHourForecast: false,
+      errorHourForecast: false,
+      hourForecastData: []
     });
   })
 
-  it('should store Commitsdata on sucess request', () =>{
-    expect(repoCommitsReducer({
-      loadingCommits: false,
-      errorCommits: false,
-      commitsData: []
+  it('should store hourForecastData on sucess request', () =>{
+    expect(hourForecastReducer({
+      loadingHourForecast: false,
+      errorHourForecast: false,
+      hourForecastData: []
     }, {
-      type: actionTypes.SET_REPO_COMMITS_DATA,
+      type: actionTypes.SET_HOUR_FORECAST_DATA,
       reposData: dataToTest
     })).toEqual({
-      loadingCommits: false,
-      errorCommits: false,
-      commitsData: dataToTest
+      loadingHourForecast: false,
+      errorHourForecast: false,
+      hourForecastData: dataToTest
     })
   })
 
   it('should set loading to true when request has been sent', () =>{
-    expect(repoCommitsReducer({
-      loadingCommits: false,
-      errorCommits: false,
-      commitsData: []
+    expect(hourForecastReducer({
+      loadingHourForecast: false,
+      errorHourForecast: false,
+      hourForecastData: []
     }, {
-      type: actionTypes.GET_REPO_COMMITS_DATA_START
+      type: actionTypes.GET_HOUR_FORECAST_DATA_START
     })).toEqual({
-      loadingCommits: true,
-      errorCommits: false,
-      commitsData: []
+      loadingHourForecast: true,
+      errorHourForecast: false,
+      hourForecastData: []
     })
   })
 
   it('should set error to true and clear loading when request has failed', () =>{
-    expect(repoCommitsReducer({
-      loadingCommits: true,
-      errorCommits: false,
-      commitsData: []
+    expect(hourForecastReducer({
+      loadingHourForecast: true,
+      errorHourForecast: false,
+      hourForecastData: []
     }, {
-      type: actionTypes.FETCH_REPO_COMMITS_DATA_FAIL
+      type: actionTypes.FETCH_HOUR_FORECAST_DATA_FAIL
     })).toEqual({
-      loadingCommits: false,
-      errorCommits: true,
-      commitsData: []
+      loadingHourForecast: false,
+      errorHourForecast: true,
+      hourForecastData: []
     })
   })
 
   it('should clear all data when restart had been requested', () =>{
-    expect(repoCommitsReducer({
-      loadingCommits: false,
-      errorCommits: true,
-      commitsData: dataToTest
+    expect(hourForecastReducer({
+      loadingHourForecast: false,
+      errorHourForecast: true,
+      hourForecastData: dataToTest
     }, {
-      type: actionTypes.RESTART_REPO_COMMITS_DATA
+      type: actionTypes.RESTART_HOUR_FORECAST_DATA
     })).toEqual({
-      loadingCommits: false,
-      errorCommits: false,
-      commitsData: []
+      loadingHourForecast: false,
+      errorHourForecast: false,
+      hourForecastData: []
     })
   })
   });

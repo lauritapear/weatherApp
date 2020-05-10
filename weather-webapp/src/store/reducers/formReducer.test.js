@@ -4,67 +4,67 @@ import * as actionTypes from '../actions/actionTypes';
 describe('Form Reducer', () =>{
   it('should have initial state', () =>{
     expect(formReducer(undefined,{})).toEqual({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: false
     });
   })
 
-  it('should update organization name when handle org name action has been dispatched', () =>{
+  it('should update city name when handle org name action has been dispatched', () =>{
     expect(formReducer({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: false
     }, {
-      type: actionTypes.HANDLE_ORGANIZATION_NAME_CHANGE,
+      type: actionTypes.HANDLE_CITY_NAME_CHANGE,
       name: 'someName'
     })).toEqual({
-      organizationName: 'someName',
-      repoName: '',
+      cityName: 'someName',
+      dayName: '',
       showRepos: false
     })
   })
 
-  it('should update repo name when handle repo name action has been dispatched', () =>{
+  it('should update day name when handle day name action has been dispatched', () =>{
     expect(formReducer({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: false
     }, {
-      type: actionTypes.HANDLE_REPO_NAME_CHANGE,
+      type: actionTypes.HANDLE_DAY_NAME_CHANGE,
       name: 'someName'
     })).toEqual({
-      organizationName: '',
-      repoName: 'someName',
+      cityName: '',
+      dayName: 'someName',
       showRepos: false
     })
   })
 
   it('should update show repos on search click', () =>{
     expect(formReducer({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: false
     }, {
       type: actionTypes.SEARCH_CLICK,
       showRepos: 'true'
     })).toEqual({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: true
     })
   })
 
   it('should clear data when restart action has been dispatched', () =>{
     expect(formReducer({
-      organizationName: 'someName',
-      repoName: 'someName',
+      cityName: 'someName',
+      dayName: 'someName',
       showRepos: true
     }, {
       type: actionTypes.RESTART_FORM
     })).toEqual({
-      organizationName: '',
-      repoName: '',
+      cityName: '',
+      dayName: '',
       showRepos: false
     })
   })

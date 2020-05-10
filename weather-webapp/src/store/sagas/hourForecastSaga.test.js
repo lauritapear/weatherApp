@@ -2,12 +2,12 @@ import { cloneableGenerator } from 'redux-saga/utils';
 import {put} from 'redux-saga/effects';
 import axios from 'axios';
 import * as actions from '../actions';
-import {getRepoCommitsDataSaga} from './repoCommitsSaga';
+import {getHourForecastDataSaga} from './hourForecastSaga';
 
-describe('Commits Saga', () =>{
-  const generator = getRepoCommitsDataSaga();
+describe('Hour Forecast Saga', () =>{
+  const generator = getHourForecastDataSaga();
 
-  it('should yield getRepoCommitsDataStart', () =>{
-    expect(generator.next().value).toEqual(put({"type": "GET_REPO_COMMITS_DATA_START"}));
+  it('should yield getHourForecastDataStart', () =>{
+    expect(generator.next().value).toEqual(put({"type": "GET_HOUR_FORECAST_DATA_START"}));
   })
 });
