@@ -66,8 +66,8 @@ class DayTable extends React.Component {
           >
             {this.props.dayForecastData.map( (row, index) => (
               <TableRow selectable={true} key={index}>
-                <TableRowColumn>{row.Date}</TableRowColumn>
-                <TableRowColumn>{row.Temperature.Minimum.Value}</TableRowColumn>
+                <TableRowColumn>{row.Day}</TableRowColumn>
+                <TableRowColumn>{row.Value}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>

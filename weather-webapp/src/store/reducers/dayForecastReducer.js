@@ -22,12 +22,31 @@ function compareForks(a, b) {
   return b.forks_count - a.forks_count;
 }
 
+function getWeekDay(date){
+  let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  let day = days[new Date(date).getDay()];
+  return day;
+}
+
+function getTempValue(temp){
+  let minValue = temp.Minimum.Value;
+  let maxValue = temp.Maximum.Value
+  let value = `${maxValue} | ${minValue}`
+  return value;
+}
+
 function setDayForecastData(state, dayForecastData) {
   let sortedData = dayForecastData.DailyForecasts;
-  console.log("sortedData", sortedData);
-  // sortedData.sort(compareForks);
+  let newData = [];
+  sortedData.forEach(element => {
+    newData.push({
+      Day: getWeekDay(element.Date),
+      Value: getTempValue(element.Temperature)
+    });
+  });
+
   return updateObject(state, {
-    'dayForecastData': sortedData,
+    'dayForecastData': newData,
     'loading': false});
 }
 
