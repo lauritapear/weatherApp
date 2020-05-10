@@ -30,7 +30,7 @@ const missingRequiredEnvironmentVariable = (environmentVariableName: any) => {
   return `The environment variable '${environmentVariableName}' is required and was not provided.`;
 };
 
-export const configureEnvVariables = (logger: any, env = process.env): void => {
+export const configureEnvVariables = (logger ?: any, env = process.env): void => {
   const deploymentEnvironment = env.DEPLOYMENT_ENVIRONMENT;
   const mongoConnectionURL = env.MONGO_CONNECTION_STRING;
   const token = env.TOKEN;
@@ -59,7 +59,7 @@ export const configureEnvVariables = (logger: any, env = process.env): void => {
     );
   }
 
-  logger.error(
+  console.log(
     `Retrieved the runtime configuration from the host environment.\nenvironment='${deploymentEnvironment}'\nmongoString='${mongoConnectionURL}'\ntoken='${token}'\nport='${port}'`,
   );
 

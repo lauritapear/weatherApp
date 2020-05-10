@@ -27,3 +27,29 @@ export async function getSingleDay(req: Request, res: Response, next: NextFuncti
     next(error);
   }
 }
+
+export async function getFiveDays(req: Request, res: Response, next: NextFunction): Promise<void> {
+  const forecastService = ForecastService.getInstance();
+  try {
+    let cityCode = await forecastService.cityCode(req.body.cityName);
+    let fiveDaysForecast = await forecastService.fiveDaysForecast(cityCode);
+    res.send('fiveDaysForecast: ' + fiveDaysForecast);
+  } catch (error) {
+    console.log(`is instanceof HttpError ${error instanceof HttpError}`);
+    console.log(`is instanceof Error ${error instanceof Error}`);
+    next(error);
+  }
+}
+
+export async function getTwelveHours(req: Request, res: Response, next: NextFunction): Promise<void> {
+  const forecastService = ForecastService.getInstance();
+  try {
+    let cityCode = await forecastService.cityCode(req.body.cityName);
+    let twelveHoursForecast = await forecastService.twelveHoursForecast(cityCode);
+    res.send('twelveHoursForecast: ' + twelveHoursForecast);
+  } catch (error) {
+    console.log(`is instanceof HttpError ${error instanceof HttpError}`);
+    console.log(`is instanceof Error ${error instanceof Error}`);
+    next(error);
+  }
+}
