@@ -8,10 +8,10 @@ configure({adapter: new Adapter()});
 
 describe('<DayTable />', () =>{
   const dataToTest = [
-        {Date: "2020-05-10T07:00:00+02:00", Temperature: {Minimun:{Value:40}} },
-        {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
-        {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
-        {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
+        {Day: "Monday", Value:40},
+        {Day: "Monday", Value:40},
+        {Day: "Monday", Value:40},
+        {Day: "Monday", Value:40},
   ];
 
   it('should render spinner if data is loading', () =>{

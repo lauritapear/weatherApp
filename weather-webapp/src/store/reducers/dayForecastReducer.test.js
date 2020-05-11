@@ -3,17 +3,18 @@ import * as actionTypes from '../actions/actionTypes';
 
 describe('Day Forecast Reducer', () =>{
   const dataToTest = [
-    {Date: "2020-05-10T07:00:00+02:00", Temperature: {Minimun:{Value:40}} },
-    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
-    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
-    {Date: "2020-05-10T07:00:00+02:00",  Temperature: {Minimun:{Value:40}} },
+    {Day: "Monday", Value:40},
+    {Day: "Monday", Value:40},
+    {Day: "Monday", Value:40},
+    {Day: "Monday", Value:40},
   ];
 
   it('should have initial state', () =>{
     expect(dayForecastReducer(undefined,{})).toEqual({
       loading: false,
       error: false,
-      dayForecastData: []
+      dayForecastData: [],
+      infoCardData: "",
     });
   })
 

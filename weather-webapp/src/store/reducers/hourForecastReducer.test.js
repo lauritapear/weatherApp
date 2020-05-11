@@ -1,11 +1,11 @@
 import {hourForecastReducer} from './hourForecastReducer';
 import * as actionTypes from '../actions/actionTypes';
 
-describe('Repo Commits Reducer', () =>{
+describe('Hour Forecast Reducer', () =>{
   const dataToTest = [
-    { Hour: 9, Temperature: {Minimun:{Value:40}}},
-    { Hour: 9, Temperature: {Minimun:{Value:40}}},
-    { Hour: 9, Temperature: {Minimun:{Value:40}}} 
+    { Time: "time", Value:40, Icon: "iconPath"},
+    { Time: "time", Value:40, Icon: "iconPath"},
+    { Time: "time", Value:40, Icon: "iconPath"},
   ];
 
   it('should have initial state', () =>{
@@ -23,7 +23,7 @@ describe('Repo Commits Reducer', () =>{
       hourForecastData: []
     }, {
       type: actionTypes.SET_HOUR_FORECAST_DATA,
-      reposData: dataToTest
+      hourForecastData: dataToTest
     })).toEqual({
       loadingHourForecast: false,
       errorHourForecast: false,
