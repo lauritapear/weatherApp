@@ -6,81 +6,50 @@ import './App.css';
 import { SearchForm } from './components';
 import { DayTable } from './components';
 import { HourTable } from './components';
+import { InfoCard } from './components';
 
 const rootStyle = {
   fontSize: '14px',
   color: '#546e7a',
   height: '100vh'
 }
+
 const mainStyle = {
   width: '100%',
-  height: '280%',
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  paddingTop: '30vh'
+  // justifyContent: 'center',
 }
 
-const dockContentStyle = {
-  top: '10px',
-  right: '10px',
-  left: '50px',
+const notVisibleStyle = {
+  width: '100%',
+  height: '100%',
   display: 'flex',
+  flexDirection: 'row',
+  // flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-  flexDirection: 'column',
-  position: 'fixed'
+  // paddingTop: '30vh'
+}
+
+const visibleStyle = {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  marginLeft: '100px',
+  marginTop: '100px',
+  // paddingTop: '30vh'
 }
 
 const dockStyle = {
   top: '9%',
   left: '10%'
 }
-// const styles = {
-//   root: {
-//     fontSize: '14px',
-//     color: '#546e7a',
-//     height: '100vh'
-//   },
-//   main: {
-//     width: '100%',
-//     height: '280%',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     paddingTop: '30vh'
-//   },
-//   dockContent: {
-//     top: '10px',
-//     right: '10px',
-//     left: '50px',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     flexDirection: 'column',
-//     position: 'fixed'
-//   },
-
-//   remove: {
-//     position: 'absolute',
-//     zIndex: 1,
-//     right: '10px',
-//     top: '10px',
-//     cursor: 'pointer'
-//   },
-
-//   title: {
-//     padding: "10px 20px",
-//     textAlign: "center",
-//     color: "yellow",
-//     fontSize: "22px"
-//   },
-
-//   theDock:{
-//     top: '9%',
-//     left: '10%'
-//   }
-// }
 
 class App extends Component {
   render() {
@@ -96,11 +65,17 @@ class App extends Component {
       style={rootStyle}
       >
         <div 
-        style={mainStyle}
+          style = {mainStyle}
         >
-          <SearchForm {...this.props}/>
+          <div style={visible ? visibleStyle : notVisibleStyle }>
+            <div style={{marginRight: '30px'}}>
+              <InfoCard {...this.props}/>
+            </div>
+            <SearchForm {...this.props}/>
+          </div>
+          
           <DayTable {...this.props}/>
-
+          
         </div>
         <Dock position='right'  size = {sizeOfDock} isVisible={visible}
           zIndex={0} dimMode='none' dockStyle={{top: '15%'}}
@@ -122,6 +97,7 @@ function mapStateToProps(state) {
     loading: state.dayForecastReducer.loading,
     error: state.dayForecastReducer.error,
     dayForecastData: state.dayForecastReducer.dayForecastData,
+    infoCardData: state.dayForecastReducer.infoCardData,
 
     loadingHourForecast: state.hourForecastReducer.loadingHourForecast,
     errorHourForecast: state.hourForecastReducer.errorHourForecast,

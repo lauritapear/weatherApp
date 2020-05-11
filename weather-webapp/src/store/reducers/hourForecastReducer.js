@@ -19,9 +19,45 @@ function fetchHourForecastDataFailed(state) {
 }
 
 function setHourForecastData(state, hourForecastData) {
+  let sortedData = hourForecastData;
+  console.log("insideReducer: ", hourForecastData)
+  let newData = [];
+  sortedData.forEach(element => {
+    let iconIndex= getIconNumber(element.WeatherIcon)
+    let icon = `http://apidev.accuweather.com/developers/Media/Default/WeatherIcons/${iconIndex}-s.png`
+    newData.push({
+      Time: getTime(element.DateTime),
+      Value: getTempValue(element.Temperature),
+      Icon: icon
+    });
+  });
   return updateObject(state, {
-    'hourForecastData': hourForecastData,
+    'hourForecastData': newData,
     'loadingHourForecast': false});
+}
+
+function getIconNumber(number){
+  let iconIdex;
+  if(number < 10)
+  {
+    iconIdex= `0${number}`
+  }else{
+    iconIdex=number;
+  }
+  return iconIdex;
+}
+
+function getTime(date){
+  // let time = (new Date(date).getHours() + 24) % 12 || 12;
+  let time = new Date(date);
+  time.toLocaleString('en-US', { hour: 'numeric', hour12: true })
+  // if(time >)
+  return time.toString();
+}
+
+function getTempValue(temp){
+  let value = temp.Value
+  return value;
 }
 
 function onRestartHourForecastData(state) {

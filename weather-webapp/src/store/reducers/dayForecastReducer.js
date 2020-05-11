@@ -4,7 +4,8 @@ import {updateObject} from '../../utils/utils';
 const initialState = {
   loading: false,
   error: false,
-  dayForecastData: []
+  dayForecastData: [],
+  infoCardData:''
 };
 
 function getDayForecastDataStart(state) {
@@ -38,6 +39,7 @@ function getTempValue(temp){
 function setDayForecastData(state, dayForecastData) {
   let sortedData = dayForecastData.DailyForecasts;
   let newData = [];
+  let info= dayForecastData.Headline.Text;
   sortedData.forEach(element => {
     newData.push({
       Day: getWeekDay(element.Date),
@@ -46,6 +48,7 @@ function setDayForecastData(state, dayForecastData) {
   });
 
   return updateObject(state, {
+    'infoCardData': info,
     'dayForecastData': newData,
     'loading': false});
 }

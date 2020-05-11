@@ -5,12 +5,13 @@ import * as actions from '../actions';
 export function * getHourForecastDataSaga(action)
 {
   yield put(actions.getHourForecastDataStart());
-  const url = 'https://api.github.com/repos';
-  const commits ='commits';
+  const url = 'http://localhost:5200/api/forecast/twelveHours';
   try {
-    console.log(action.cityName);
-    console.log(action.dayName);
-    const response = yield axios.get(`${url}/${action.cityName}/${action.dayName}/${commits}`);
+    const response = yield axios.get(url, {
+      params: {
+        cityName: action.cityName,
+      },
+    });
     yield put(actions.setHourForecastData(response.data));
   } catch (error) {
     yield put(actions.fetchHourForecastDataFailed(error));

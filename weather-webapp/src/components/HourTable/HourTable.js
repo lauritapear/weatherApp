@@ -14,11 +14,11 @@ class HourTable extends React.Component {
   render() {
     let table = null;
 
-    if (this.props.loadingCommits) {
+    if (this.props.loadingHourForecast) {
       table = <div>
         <Spinner/>
       </div>;
-    } else if ((!this.props.loadingCommits) && (this.props.errorCommits)) {
+    } else if ((!this.props.loadingHourForecast) && (this.props.errorHourForecast)) {
       table = <div>
         <br></br>
         <br></br>
@@ -28,14 +28,18 @@ class HourTable extends React.Component {
       </div>;
     } else {
       if (this.props.hourForecastData.length > 0) {
+        console.log(this.props.hourForecastData);
         table = <List >
-          <Subheader>Forecast for {this.props.dayName}</Subheader>
-          <Divider inset={true}/> {this.props.hourForecastData.map((commit, index) => (
+          <Subheader>Forecast for today</Subheader>
+          <Divider inset={true}/> {this.props.hourForecastData.map((element, index) => (
+            
             <ListItem key={index} leftAvatar={< Avatar src = {
-              commit.author
-                ? commit.author['avatar_url']
+              element.Icon
+                ? element.Icon
                 : require("../../images/placeHolder.png")
-            } />} primaryText={commit.commit['message']} secondaryText={commit.commit.author['name']}/>
+            } />} 
+            primaryText={element.Time} secondaryText={element.Value}
+            />
           ))}
 
         </List>

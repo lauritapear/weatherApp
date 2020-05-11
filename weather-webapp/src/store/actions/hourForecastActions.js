@@ -12,11 +12,10 @@ export function fetchHourForecastDataFailed(er) {
   return {type: actionTypes.FETCH_HOUR_FORECAST_DATA_FAIL, er};
 }
 
-export function getHourForecastData(cityName, dayName) {
+export function getHourForecastData(cityName) {
   return {
     type: actionTypes.GET_HOUR_FORECAST_DATA,
-    cityName: cityName,
-    dayName: dayName
+    cityName: cityName
   }
 }
 

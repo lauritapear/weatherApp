@@ -55,7 +55,7 @@ class DayTable extends React.Component {
             </TableRow>
             <TableRow>
               <TableHeaderColumn tooltip="Day ">Day of Week</TableHeaderColumn>
-              <TableHeaderColumn tooltip="Temperature">Temperature</TableHeaderColumn>
+              <TableHeaderColumn tooltip="Temperature">Temperature F (Min, Max)</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
