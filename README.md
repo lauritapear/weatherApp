@@ -2,7 +2,7 @@
 
 Application to display forecast of an specified city
 
-### To run Application 
+## To run Application 
 
 1. First get an accuweather API token, you can get it by registering here:
 https://developer.accuweather.com/
@@ -17,11 +17,16 @@ https://developer.accuweather.com/
 
 And that is it 👏  you can now access weather app on port 3000
 
-### What I used
+## To run Test
+
+1. Navegate to ```weather-service folder``` and enter : ```npm test```
+2. Navegate to ```weather-webapp folder``` and enter : ```npm test --watchAll```
+
+## What I used
 * ReactJS
 * Express
 * NodeJS
-* Enzyme
+* Enzyme with Jest
 * Riteway
 * Docker
 * Docker Compose
