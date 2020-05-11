@@ -50,7 +50,7 @@ class DayTable extends React.Component {
           <TableHeader displaySelectAll={false}>
             <TableRow >
               <TableHeaderColumn colSpan="2" tooltip="Week days table" style={{textAlign: 'left'}}>
-                {/* List of week days weather in {this.props.cityName} */}
+                {/* {this.props.cityName} forcast by day of week */}
               </TableHeaderColumn>
             </TableRow>
             <TableRow>

@@ -19,10 +19,6 @@ function fetchDayForecastDataFailed(state) {
   });
 }
 
-function compareForks(a, b) {
-  return b.forks_count - a.forks_count;
-}
-
 function getWeekDay(date){
   let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   let day = days[new Date(date).getDay()];
